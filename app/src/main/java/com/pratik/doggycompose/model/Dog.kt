@@ -1,5 +1,6 @@
-
 package com.pratik.doggycompose.model
+
+import androidx.annotation.DrawableRes
 
 data class Dog(
     val id: Int,
@@ -9,6 +10,7 @@ data class Dog(
     val color: String,
     val weight: Double,
     val location: String,
-    val image: Int,
+    @DrawableRes val image: Int,
     val about: String,
+    val breedName: String = ""
 )

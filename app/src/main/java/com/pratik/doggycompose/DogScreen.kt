@@ -1,23 +1,22 @@
 package com.example.secondjetpackcompose
 
+import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
@@ -43,8 +42,9 @@ fun DogScreen(navController: NavHostController, dogList: List<Dog>) {
                 )
             }
         }
-        items(dogList) {
+        item {
             dogList.forEach {
+                Log.e("called", it.id.toString())
                 DogRow(
                     it, onItemClick = { dog ->
                         val dogPath = "${Screens.DETAIL}/${dog.id}"
@@ -65,34 +65,22 @@ fun DogRow(dog: Dog, onItemClick: (dog: Dog) -> Unit) {
             onItemClick(dog)
         }) {
         Row(Modifier.fillMaxSize()) {
-            val roundedShape = RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp)
             Image(
                 painter = painterResource(id = dog.image),
                 modifier = Modifier
                     .size(100.dp)
-                    .background(Color.Red, shape = roundedShape),
+                    .padding(10.dp)
+                    .clip(shape = CutCornerShape(10.dp)),
                 contentDescription = null
             )
             Column(Modifier.padding(10.dp)) {
-                Text(text = dog.name)
-                Text(text = "${dog.weight}")
+                Text(text = dog.name, style = MaterialTheme.typography.h6)
+                Text(text = "Gender: ${dog.age} years old", style = MaterialTheme.typography.body2)
+                Text(text = "Gender: ${dog.gender}", style = MaterialTheme.typography.body2)
             }
         }
     }
-
 }
 
 
-@Preview
-@Composable
-fun Button() {
-    Card(
-        modifier = Modifier
-            .padding(10.dp)
-            .wrapContentWidth()
-            .wrapContentHeight()
-    ) {
-        Text(text = "Hello")
-    }
-}
 

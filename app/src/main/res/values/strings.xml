@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DoggyCompose</string>
+    <string name="error_message">No data available</string>
 </resources>

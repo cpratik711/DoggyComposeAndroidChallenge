@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
 import com.example.secondjetpackcompose.DogDetailScreen
 import com.example.secondjetpackcompose.DogScreen
@@ -32,8 +34,14 @@ fun Navigation() {
         composable(Screens.HOME) {
             DogScreen(navController, FakeDogDatabase.dogList)
         }
-        composable(Screens.DETAIL) {
-            DogDetailScreen(navController)
+        composable(
+            "${Screens.DETAIL}/{dog_id}",
+            arguments = listOf(navArgument("dog_id") {
+                type = NavType.IntType
+            })
+        ) {
+            var dogId = it.arguments?.getInt("dog_id") ?: 0
+            DogDetailScreen(navController, dogId)
         }
     }
 }

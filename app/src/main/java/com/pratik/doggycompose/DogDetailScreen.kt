@@ -5,12 +5,16 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Pets
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -80,8 +84,11 @@ fun DogDetailScreen(navController: NavHostController, dogId: Int) {
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(text = "Adopt me")
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Icon(Icons.Default.Pets, contentDescription = "Adopt", tint = Color.White)
                 }
             }
+
         }
     }
 }

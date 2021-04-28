@@ -13,6 +13,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -67,6 +68,7 @@ fun DogRow(dog: Dog, onItemClick: (dog: Dog) -> Unit) {
         }) {
         Row(Modifier.fillMaxSize()) {
             Image(
+                contentScale = ContentScale.Crop,
                 painter = painterResource(id = dog.image),
                 modifier = Modifier
                     .size(100.dp)

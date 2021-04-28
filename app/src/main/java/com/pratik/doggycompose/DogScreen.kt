@@ -75,7 +75,7 @@ fun DogRow(dog: Dog, onItemClick: (dog: Dog) -> Unit) {
             )
             Column(Modifier.padding(10.dp)) {
                 Text(text = dog.name, style = MaterialTheme.typography.h6)
-                Text(text = "Gender: ${dog.age} years old", style = MaterialTheme.typography.body2)
+                Text(text = "${dog.age} years old", style = MaterialTheme.typography.body1)
                 Text(text = "Gender: ${dog.gender}", style = MaterialTheme.typography.body2)
             }
         }

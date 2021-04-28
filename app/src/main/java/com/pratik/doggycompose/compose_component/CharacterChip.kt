@@ -1,6 +1,7 @@
 package com.pratik.doggycompose.compose_component
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -14,7 +15,9 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun CharacterChip(character: String, colorResource: Color = Color.Blue) {
     Card(
-        modifier = Modifier.padding(10.dp),
+        modifier = Modifier
+            .padding(10.dp)
+            .wrapContentWidth(),
         elevation = 4.dp
     ) {
         Text(

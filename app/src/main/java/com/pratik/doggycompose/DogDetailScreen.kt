@@ -8,6 +8,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -56,6 +57,7 @@ fun DogDetailScreen(navController: NavHostController, dogId: Int) {
                 )
                 HeightSpacer(space = 10.dp)
                 Text(text = dog.about)
+
             }
         }
 
@@ -76,7 +78,9 @@ fun DogDetailScreen(navController: NavHostController, dogId: Int) {
                     .fillMaxWidth()
                     .padding(10.dp)
             ) {
-                Text(text = "Adopt me")
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(text = "Adopt me")
+                }
             }
         }
     }
